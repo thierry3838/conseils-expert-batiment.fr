@@ -1,1 +1,78 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid + Flexbox Exemple 2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: grid;
+      grid-template-areas:
+        "header"
+        "content"
+        "footer";
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+    }
+
+    header {
+      grid-area: header;
+      background: #0074D9;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+
+    main {
+      grid-area: content;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1em;
+      padding: 1em;
+    }
+
+    aside {
+      background: #FFDC00;
+      padding: 1em;
+    }
+
+    article {
+      background: #eee;
+      padding: 1em;
+    }
+
+    footer {
+      grid-area: footer;
+      background: #2ECC40;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        grid-template-areas:
+          "header header"
+          "sidebar content"
+          "footer footer";
+        grid-template-columns: 250px 1fr;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>Header</header>
+  <aside style="grid-area: sidebar;">Sidebar</aside>
+  <main>
+    <article>Article principal</article>
+  </main>
+  <footer>Footer</footer>
+</body>
+</html>
