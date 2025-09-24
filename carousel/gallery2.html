@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lightbox for Bootstrap 5</title>
+
+    <!-- Bootstrap 5.3.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+          crossorigin="anonymous">
+
+    <!-- Ton CSS perso -->
+    <link rel="stylesheet" href="/gallery.css">
+  </head>
+  <body>
+    <main class="container">
+      <div class="container py-5 text-center">
+        <h2 class="display-6 fw-bold py-5">Lightbox Gallery:</h2>
+        <div class="row">
+          <a class="col-md-12 col-lg-4 img-fluid py-2" href="gallery/pic7.jpg" data-toggle="lightbox" data-gallery="photo_gallery">
+            <img src="gallery/pic7.jpg" alt="random img" class="img-fluid">
+          </a>
+          <a class="col-md-12 col-lg-4 img-fluid py-2" href="gallery/pic8.jpg" data-toggle="lightbox" data-gallery="photo_gallery">
+            <img src="gallery/pic8.jpg" alt="random img" class="img-fluid">
+          </a>
+          <a class="col-md-12 col-lg-4 img-fluid py-2" href="gallery/pic9.jpg" data-toggle="lightbox" data-gallery="photo_gallery">
+            <img src="gallery/pic9.jpg" alt="random img" class="img-fluid">
+          </a>
+        </div>
+        <div class="row">
+          <a class="col-md-12 col-lg-4 img-fluid py-2" href="gallery/pic1.jpg" data-toggle="lightbox" data-gallery="photo_gallery">
+            <img src="gallery/pic1.jpg" alt="random img" class="img-fluid">
+          </a>
+          <a class="col-md-12 col-lg-4 img-fluid py-2" href="gallery/pic2.jpg" data-toggle="lightbox" data-gallery="photo_gallery">
+            <img src="gallery/pic2.jpg" alt="random img" class="img-fluid">
+          </a>
+          <a class="col-md-12 col-lg-4 img-fluid py-2" href="gallery/pic3.jpg" data-toggle="lightbox" data-gallery="photo_gallery">
+            <img src="gallery/pic3.jpg" alt="random img" class="img-fluid">
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bootstrap 5.3.2 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+            crossorigin="anonymous"></script>
+
+    <!-- Lightbox -->
+    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+  </body>
+</html>
