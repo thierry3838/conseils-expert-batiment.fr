@@ -1,0 +1,27 @@
+# robots.txt - Thierry Guiffault Expert Bâtiment Grenoble
+# https://conseils-expert-batiment.fr
+
+# Autoriser tous les robots
+User-agent: *
+Allow: /
+
+# Bloquer les pages non pertinentes pour le SEO
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.pdf$
+
+# Autoriser Google et Bing à tout indexer
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://conseils-expert-batiment.fr/sitemap.xml
+
+# Crawl-delay (optionnel - demande aux robots d'attendre entre les requêtes)
+# Crawl-delay: 10
+
+# Host (indique le domaine principal)
+Host: https://conseils-expert-batiment.fr
