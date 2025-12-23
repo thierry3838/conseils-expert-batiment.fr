@@ -1,52 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    
-    <!-- Page d'accueil -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Page principale -->
     <url>
         <loc>https://conseils-expert-batiment.fr/</loc>
-        <lastmod>2024-12-20</lastmod>
+        <lastmod>2024-12-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     
-    <!-- Sections principales (ancres) -->
+    <!-- Pages de services -->
+    <url>
+        <loc>https://conseils-expert-batiment.fr/diagnostic-avant-achat.html</loc>
+        <lastmod>2024-12-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://conseils-expert-batiment.fr/etude-faisabilite.html</loc>
+        <lastmod>2024-12-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://conseils-expert-batiment.fr/optimisation-projet-neuf.html</loc>
+        <lastmod>2024-12-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://conseils-expert-batiment.fr/optimisation-renovation.html</loc>
+        <lastmod>2024-12-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://conseils-expert-batiment.fr/aide-choix-technique.html</loc>
+        <lastmod>2024-12-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://conseils-expert-batiment.fr/assistance-artisans.html</loc>
+        <lastmod>2024-12-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://conseils-expert-batiment.fr/assistance-architecte.html</loc>
+        <lastmod>2024-12-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://conseils-expert-batiment.fr/conseil-materiaux.html</loc>
+        <lastmod>2024-12-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Sections de la page principale -->
     <url>
         <loc>https://conseils-expert-batiment.fr/#services</loc>
-        <lastmod>2024-12-20</lastmod>
+        <lastmod>2024-12-22</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
     </url>
-    
     <url>
         <loc>https://conseils-expert-batiment.fr/#tarifs</loc>
-        <lastmod>2024-12-20</lastmod>
+        <lastmod>2024-12-22</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
     </url>
-    
     <url>
         <loc>https://conseils-expert-batiment.fr/#a-propos</loc>
-        <lastmod>2024-12-20</lastmod>
+        <lastmod>2024-12-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://conseils-expert-batiment.fr/#contact</loc>
+        <lastmod>2024-12-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
-    <url>
-        <loc>https://conseils-expert-batiment.fr/#contact</loc>
-        <lastmod>2024-12-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    
-    <!-- Mentions légales -->
+    <!-- Page légale -->
     <url>
         <loc>https://conseils-expert-batiment.fr/mentions-legales.html</loc>
-        <lastmod>2024-12-20</lastmod>
+        <lastmod>2024-12-22</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
-    
 </urlset>
