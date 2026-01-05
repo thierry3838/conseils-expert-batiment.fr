@@ -779,6 +779,8 @@
             <div class="contact-content">
                 <div class="contact-form-wrapper reveal">
                     <form class="contact-form" id="contactForm">
+                        <input type="hidden" name="site" value="nomdusite.fr">
+
                         <div class="row">
                             <div class="col-md-6"><div class="form-group"><label for="nom">Nom <span class="required">*</span></label><input type="text" id="nom" name="nom" required placeholder="Votre nom"></div></div>
                             <div class="col-md-6"><div class="form-group"><label for="prenom">Prénom <span class="required">*</span></label><input type="text" id="prenom" name="prenom" required placeholder="Votre prénom"></div></div>
@@ -834,91 +836,134 @@
     </script>
     
     <!-- Main JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Navbar scroll effect
-            const navbar = document.getElementById('mainNav');
-            function handleNavbarScroll() { 
-                if (window.scrollY > 50) { 
-                    navbar.classList.add('scrolled'); 
-                } else { 
-                    navbar.classList.remove('scrolled'); 
-                } 
-            }
-            window.addEventListener('scroll', handleNavbarScroll);
-            handleNavbarScroll();
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
 
-            // Active nav link on scroll
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-            function highlightNavLink() { 
-                const scrollPosition = window.scrollY + 100; 
-                sections.forEach(section => { 
-                    const sectionTop = section.offsetTop; 
-                    const sectionHeight = section.offsetHeight; 
-                    const sectionId = section.getAttribute('id'); 
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) { 
-                        navLinks.forEach(link => { 
-                            link.classList.remove('active'); 
-                            if (link.getAttribute('href') === '#' + sectionId) { 
-                                link.classList.add('active'); 
-                            } 
-                        }); 
+    /* ===============================
+       Navbar scroll effect
+    =============================== */
+    const navbar = document.getElementById('mainNav');
+    function handleNavbarScroll() { 
+        if (window.scrollY > 50) { 
+            navbar.classList.add('scrolled'); 
+        } else { 
+            navbar.classList.remove('scrolled'); 
+        } 
+    }
+    window.addEventListener('scroll', handleNavbarScroll);
+    handleNavbarScroll();
+
+    /* ===============================
+       Active nav link on scroll
+    =============================== */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    function highlightNavLink() { 
+        const scrollPosition = window.scrollY + 100; 
+        sections.forEach(section => { 
+            const sectionTop = section.offsetTop; 
+            const sectionHeight = section.offsetHeight; 
+            const sectionId = section.getAttribute('id'); 
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) { 
+                navLinks.forEach(link => { 
+                    link.classList.remove('active'); 
+                    if (link.getAttribute('href') === '#' + sectionId) { 
+                        link.classList.add('active'); 
                     } 
                 }); 
+            } 
+        }); 
+    }
+    window.addEventListener('scroll', highlightNavLink);
+
+    /* ===============================
+       Close mobile nav
+    =============================== */
+    const navbarCollapse = document.getElementById('navbarNav');
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    navLinks.forEach(link => { 
+        link.addEventListener('click', () => { 
+            if (navbarCollapse.classList.contains('show')) { 
+                navbarToggler.click(); 
+            } 
+        }); 
+    });
+
+    /* ===============================
+       Back to top button
+    =============================== */
+    const backToTopBtn = document.getElementById('backToTop');
+    function handleBackToTopVisibility() { 
+        if (window.scrollY > 500) { 
+            backToTopBtn.classList.add('visible'); 
+        } else { 
+            backToTopBtn.classList.remove('visible'); 
+        } 
+    }
+    window.addEventListener('scroll', handleBackToTopVisibility);
+    backToTopBtn.addEventListener('click', () => { 
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+    });
+
+    /* ===============================
+       Scroll reveal animation
+    =============================== */
+    const revealElements = document.querySelectorAll('.reveal');
+    function revealOnScroll() { 
+        const windowHeight = window.innerHeight; 
+        const revealPoint = 150; 
+        revealElements.forEach(element => { 
+            const elementTop = element.getBoundingClientRect().top; 
+            if (elementTop < windowHeight - revealPoint) { 
+                element.classList.add('revealed'); 
+            } 
+        }); 
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    /* ===============================
+       CONTACT FORM → Google Apps Script
+    =============================== */
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(contactForm);
+
+        const data = {
+            nom: formData.get('nom'),
+            prenom: formData.get('prenom'),
+            email: formData.get('email'),
+            telephone: formData.get('telephone'),
+            service: formData.get('service'),
+            message: formData.get('message'),
+            rgpd: formData.get('rgpd') ? true : false,
+            site: formData.get('site') || window.location.hostname
+        };
+
+        fetch("URL_DU_WEB_APP_APPS_SCRIPT_ICI", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                alert("✅ Merci " + data.nom + " ! Votre message a bien été envoyé.\nJe vous recontacte sous 24h.");
+                contactForm.reset();
+            } else {
+                alert("❌ Une erreur est survenue. Merci de réessayer.");
             }
-            window.addEventListener('scroll', highlightNavLink);
-
-            // Close mobile nav on link click
-            const navbarCollapse = document.getElementById('navbarNav');
-            const navbarToggler = document.querySelector('.navbar-toggler');
-            navLinks.forEach(link => { 
-                link.addEventListener('click', () => { 
-                    if (navbarCollapse.classList.contains('show')) { 
-                        navbarToggler.click(); 
-                    } 
-                }); 
-            });
-
-            // Back to top button
-            const backToTopBtn = document.getElementById('backToTop');
-            function handleBackToTopVisibility() { 
-                if (window.scrollY > 500) { 
-                    backToTopBtn.classList.add('visible'); 
-                } else { 
-                    backToTopBtn.classList.remove('visible'); 
-                } 
-            }
-            window.addEventListener('scroll', handleBackToTopVisibility);
-            backToTopBtn.addEventListener('click', () => { 
-                window.scrollTo({ top: 0, behavior: 'smooth' }); 
-            });
-
-            // Scroll reveal animation
-            const revealElements = document.querySelectorAll('.reveal');
-            function revealOnScroll() { 
-                const windowHeight = window.innerHeight; 
-                const revealPoint = 150; 
-                revealElements.forEach(element => { 
-                    const elementTop = element.getBoundingClientRect().top; 
-                    if (elementTop < windowHeight - revealPoint) { 
-                        element.classList.add('revealed'); 
-                    } 
-                }); 
-            }
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll();
-
-            // Contact form
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', function(e) { 
-                e.preventDefault(); 
-                const formData = new FormData(contactForm); 
-                const nom = formData.get('nom'); 
-                alert('Merci ' + nom + ' ! Votre message a bien été envoyé. Je vous recontacte sous 24h.'); 
-                contactForm.reset(); 
-            });
+        })
+        .catch(() => {
+            alert("❌ Impossible d'envoyer le message. Vérifiez votre connexion.");
         });
-    </script>
+    });
+
+});
+</script>
+
 </body>
 </html>
