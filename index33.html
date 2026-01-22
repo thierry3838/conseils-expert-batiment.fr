@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conseils Expert Bâtiment – Spécialiste en Chauffe-Eau à Grenoble</title>
+    <meta name="description" content="Conseils Expert Bâtiment, spécialiste du remplacement de chauffe-eau à Grenoble et ses alentours. Intervention rapide et professionnelle.">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Votre CSS personnalisé -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles spécifiques pour le formulaire de contact */
+        #contact .contact-form .form-group {
+            margin-bottom: 1rem;
+        }
+        #contact .alert {
+            margin-top: 1rem;
+        }
+        /* Ajoutez ici vos styles existants pour conserver la cohérence */
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Conseils Expert Bâtiment</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sections existantes (exemple) -->
+    <section id="accueil" class="py-5">
+        <div class="container">
+            <h1>Bienvenue chez Conseils Expert Bâtiment</h1>
+            <p>Spécialiste du remplacement de chauffe-eau à Grenoble et ses alentours.</p>
+        </div>
+    </section>
+
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2>Nos Services</h2>
+            <p>Remplacement de chauffe-eau, entretien, dépannage, etc.</p>
+        </div>
+    </section>
+
+    <!-- Section Contact mise à jour -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center mb-4">
+                    <h2 class="section-title">Contactez-nous</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Formulaire de contact -->
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="nom" placeholder="Nom *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="prenom" placeholder="Prénom *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" name="telephone" placeholder="Téléphone">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="service" placeholder="Type de projet">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" rows="5" placeholder="Message *" required></textarea>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" name="rgpd" required>
+                            <label class="form-check-label">
+                                J'accepte le traitement de mes données personnelles conformément à la politique de confidentialité. *
+                            </label>
+                        </div>
+                        <input type="hidden" name="site" value="conseils-expert-batiment.fr">
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                        <div id="contactAlert" class="alert mt-3" style="display: none;"></div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <!-- Informations de contact -->
+                    <div class="contact-info">
+                        <h3>Coordonnées</h3>
+                        <p><i class="fas fa-map-marker-alt me-2"></i> 14B Chemin de la Blanchisserie, 38100 Grenoble</p>
+                        <p><i class="fas fa-phone me-2"></i> <a href="tel:+33652355584">06 52 35 55 84</a></p>
+                        <p><i class="fas fa-envelope me-2"></i> <a href="mailto:thierry@guiffault.com">thierry@guiffault.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2026 Conseils Expert Bâtiment – Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script pour le formulaire de contact -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const contactForm = document.getElementById("contactForm");
+            const contactAlert = document.getElementById("contactAlert");
+
+            contactForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                const formData = {
+                    nom: this.nom.value,
+                    prenom: this.prenom.value,
+                    email: this.email.value,
+                    telephone: this.telephone.value,
+                    service: this.service.value,
+                    message: this.message.value,
+                    rgpd: this.rgpd.checked,
+                    site: this.site.value
+                };
+
+                // URL de votre Web App Google Apps Script
+                const url = "https://script.google.com/macros/s/AKfycbx0VpdI8GHypxO1BIok_zsfQYyaYuMVpr-MBNob2Z8cSUltpyIZzj7PfvwfakdZg9Dm/exec";
+
+                // Désactive le bouton d'envoi
+                const submitButton = this.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.textContent = "Envoi en cours...";
+
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    contactAlert.style.display = "block";
+                    if (data.success) {
+                        contactAlert.className = "alert alert-success mt-3";
+                        contactAlert.textContent = data.message;
+                        contactForm.reset();
+                    } else {
+                        contactAlert.className = "alert alert-danger mt-3";
+                        contactAlert.textContent = "Erreur : " + data.error;
+                    }
+                })
+                .catch(error => {
+                    console.error("Erreur réseau :", error);
+                    contactAlert.style.display = "block";
+                    contactAlert.className = "alert alert-danger mt-3";
+                    contactAlert.textContent = "Impossible d'envoyer le message. Vérifiez votre connexion.";
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Envoyer";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
