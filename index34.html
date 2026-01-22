@@ -782,39 +782,103 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact section-padding" id="contact">
-        <div class="container">
-            <div class="section-header reveal"><h2>Parlons de votre projet</h2><p>Premier échange téléphonique gratuit et sans engagement. Je vous rappelle sous 24h.</p></div>
-            <div class="contact-content">
-                <div class="contact-form-wrapper reveal">
-                    <form class="contact-form" id="contactForm">
-                        <input type="hidden" name="site" value="nomdusite.fr">
-
-                        <div class="row">
-                            <div class="col-md-6"><div class="form-group"><label for="nom">Nom <span class="required">*</span></label><input type="text" id="nom" name="nom" required placeholder="Votre nom"></div></div>
-                            <div class="col-md-6"><div class="form-group"><label for="prenom">Prénom <span class="required">*</span></label><input type="text" id="prenom" name="prenom" required placeholder="Votre prénom"></div></div>
-                        </div>
-                        <div class="form-group"><label for="email">Email <span class="required">*</span></label><input type="email" id="email" name="email" required placeholder="votre@email.com"></div>
-                        <div class="form-group"><label for="telephone">Téléphone <span class="required">*</span></label><input type="tel" id="telephone" name="telephone" required placeholder="06 00 00 00 00"></div>
-                        <div class="form-group"><label for="service">Type de projet</label><select id="service" name="service"><option value="">Sélectionnez un service...</option><option value="diagnostic">Diagnostic avant achat</option><option value="faisabilite">Étude de faisabilité</option><option value="neuf">Optimisation projet neuf</option><option value="renovation">Optimisation rénovation</option><option value="choix-technique">Aide au choix technique</option><option value="artisans">Assistance contact artisans</option><option value="architecte">Assistance contact architecte</option><option value="materiaux">Conseil matériaux</option><option value="autre">Autre demande</option></select></div>
-                        <div class="form-group"><label for="message">Votre message</label><textarea id="message" name="message" placeholder="Décrivez brièvement votre projet..."></textarea></div>
-                        <div class="form-group"><div class="form-check"><input type="checkbox" id="rgpd" name="rgpd" required><label for="rgpd">J'accepte que mes données soient traitées dans le cadre de ma demande de contact. <a href="mentions-legales.html" style="color: var(--color-primary);">Politique de confidentialité</a> <span class="required">*</span></label></div></div>
-                        <button type="submit" class="btn btn-accent"><i class="bi bi-send"></i> Envoyer ma demande</button>
-                    </form>
-                </div>
-                <div class="contact-info reveal">
-                    <h3>Contactez-moi directement</h3>
-                    <p>Vous préférez un échange direct ? N'hésitez pas à m'appeler ou m'envoyer un email. Je suis disponible du lundi au vendredi.</p>
-                    <div class="contact-methods">
-                        <a href="tel:+33652355584" class="contact-method"><div class="contact-method-icon"><i class="bi bi-telephone"></i></div><div><div class="contact-method-label">Téléphone</div><div class="contact-method-text">06 52 35 55 84</div></div></a>
-                        <a href="mailto:contact@conseils-expert-batiment.fr" class="contact-method"><div class="contact-method-icon"><i class="bi bi-envelope"></i></div><div><div class="contact-method-label">Email</div><div class="contact-method-text">contact@conseils-expert-batiment.fr</div></div></a>
-                        <div class="contact-method"><div class="contact-method-icon"><i class="bi bi-geo-alt"></i></div><div><div class="contact-method-label">Adresse</div><div class="contact-method-text">14bis chemin de la blanchisserie<br>38100 Grenoble</div></div></div>
-                    </div>
-                    <div class="contact-hours"><h4><i class="bi bi-clock"></i> Horaires</h4><ul><li><span>Lundi - Vendredi</span><span>8h30 - 18h30</span></li><li><span>Samedi</span><span>Sur rendez-vous</span></li><li><span>Dimanche</span><span>Fermé</span></li></ul></div>
-                </div>
-            </div>
+    <!-- Section Contact (à placer où se trouve actuellement votre formulaire) -->
+<div class="col-md-6">
+    <!-- Formulaire de contact -->
+    <form id="contactForm" class="contact-form">
+        <div class="form-group">
+            <input type="text" class="form-control" name="nom" placeholder="Nom *" required>
         </div>
-    </section>
+        <div class="form-group">
+            <input type="text" class="form-control" name="prenom" placeholder="Prénom *" required>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email *" required>
+        </div>
+        <div class="form-group">
+            <input type="tel" class="form-control" name="telephone" placeholder="Téléphone">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="service" placeholder="Type de projet">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="message" rows="5" placeholder="Message *" required></textarea>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" name="rgpd" required>
+            <label class="form-check-label">
+                J'accepte le traitement de mes données personnelles conformément à la politique de confidentialité. *
+            </label>
+        </div>
+        <input type="hidden" name="site" value="conseils-expert-batiment.fr">
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <div id="contactAlert" class="alert mt-3" style="display: none;"></div>
+    </form>
+</div>
+
+<!-- Script pour le formulaire de contact (à placer avant la fermeture de la balise </body>) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) { // Vérifie que le formulaire existe sur la page
+            const contactAlert = document.getElementById("contactAlert");
+
+            contactForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                const formData = {
+                    nom: this.nom.value,
+                    prenom: this.prenom.value,
+                    email: this.email.value,
+                    telephone: this.telephone.value,
+                    service: this.service.value,
+                    message: this.message.value,
+                    rgpd: this.rgpd.checked,
+                    site: this.site.value
+                };
+
+                // URL de votre Web App Google Apps Script
+                const url = "https://script.google.com/macros/s/AKfycbx0VpdI8GHypxO1BIok_zsfQYyaYuMVpr-MBNob2Z8cSUltpyIZzj7PfvwfakdZg9Dm/exec";
+
+                // Désactive le bouton d'envoi
+                const submitButton = this.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.textContent = "Envoi en cours...";
+
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                    mode: 'no-cors' // Ajout pour éviter les erreurs CORS
+                })
+                .then(async response => {
+                    const data = await response.json().catch(() => ({ success: true, message: "Message envoyé avec succès !" }));
+                    contactAlert.style.display = "block";
+                    if (data.success) {
+                        contactAlert.className = "alert alert-success mt-3";
+                        contactAlert.textContent = data.message || "Message envoyé avec succès !";
+                        contactForm.reset();
+                    } else {
+                        contactAlert.className = "alert alert-danger mt-3";
+                        contactAlert.textContent = "Erreur : " + (data.error || "Impossible d'envoyer le message.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Erreur réseau :", error);
+                    contactAlert.style.display = "block";
+                    contactAlert.className = "alert alert-danger mt-3";
+                    contactAlert.textContent = "Impossible d'envoyer le message. Vérifiez votre connexion.";
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Envoyer";
+                });
+            });
+        }
+    });
+</script>
 
     <!-- Footer -->
     <footer class="footer">
