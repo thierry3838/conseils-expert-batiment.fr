@@ -1,0 +1,46 @@
+<form id="contactForm">
+  <input type="text" name="nom" placeholder="Nom" required>
+  <input type="text" name="prenom" placeholder="Prénom" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="tel" name="telephone" placeholder="Téléphone">
+  <input type="text" name="service" placeholder="Type de projet">
+  <textarea name="message" placeholder="Votre message" required></textarea>
+  <input type="checkbox" name="rgpd" required> J'accepte le traitement de mes données
+  <input type="hidden" name="site" value="model-maison.fr">
+  <button type="submit">Envoyer</button>
+</form>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const formData = {
+      nom: this.nom.value,
+      prenom: this.prenom.value,
+      email: this.email.value,
+      telephone: this.telephone.value,
+      service: this.service.value,
+      message: this.message.value,
+      rgpd: this.rgpd.checked,
+      site: this.site.value
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbx0VpdI8GHypxO1BIok_zsfQYyaYuMVpr-MBNob2Z8cSUltpyIZzj7PfvwfakdZg9Dm/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert("Merci ! Votre message a été envoyé.");
+      } else {
+        alert("Erreur : " + data.error);
+      }
+    })
+    .catch(error => {
+      alert("Erreur réseau : " + error);
+    });
+  });
+</script>
